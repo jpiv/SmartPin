@@ -2,14 +2,21 @@ import time
 from pirc522 import RFID
 
 from tags import WeightTag
+from display import Display
+from accelerometer import Accelerometer
 from log import log
 
 rf = RFID()
+display = Display()
+accel = Accelerometer()
 
 def handle_tag(tag):
 	# tag.weight = 20
-	log('Weight of tag is', tag.weight)
-	time.sleep(1.5)
+	tagWeight = tag.weight
+	display.show(tagWeight)
+	log('Weight of tag is', tagWeight)
+
+	# time.sleep(1.5)
 
 def get_tag():
 	rf.request()
@@ -22,7 +29,13 @@ def get_tag():
 def detect_tags():
 	log('Waiting for tags...')
 	while True:
-		rf.wait_for_tag()
+		# rf.wait_for_tag()
+		if accel.isGoingUp():
+			display.show('FFFF')
+			time.sleep(2)
+			display.show('0000')
+
+		rf.init()
 		get_tag()
 
 def start_loop():
