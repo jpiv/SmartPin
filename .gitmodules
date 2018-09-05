@@ -1,0 +1,3 @@
+[submodule "pylis"]
+	path = pylis
+	url = https://github.com/mattdy/python-lis3dh
