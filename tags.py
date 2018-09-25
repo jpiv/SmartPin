@@ -2,6 +2,7 @@ from log import log
 
 class Tag(object):
 	_key = [0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF]
+	# Need to skip sector trailer
 	_blocks = 15
 	rf = None
 	rfutil = None
@@ -80,8 +81,5 @@ class WeightTag(Tag, object):
 	@weight.setter
 	def weight(self, weight):
 		self.set(self._block, weight)
-
-
-
 
 
