@@ -29,4 +29,4 @@ six==1.8.0
 smbus==1.1
 smbus2==0.2.1
 spidev==3.0
-urllib3==1.9.1
+urllib3==1.24.2
